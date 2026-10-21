@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Éléments de solution/">
+    <File Path="Readme.md" />
+  </Folder>
+  <Project Path="DemoCinema.BLL/DemoCinema.BLL.csproj" />
+  <Project Path="DemoCinema.DAL/DemoCinema.DAL.csproj" />
+  <Project Path="DemoCinema.WebApp/DemoCinema.WebApp.csproj" />
+</Solution>
