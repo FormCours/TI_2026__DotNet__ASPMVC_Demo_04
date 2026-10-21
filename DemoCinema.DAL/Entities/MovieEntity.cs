@@ -8,6 +8,6 @@
         public string Director { get; set; }
         public List<string> Genres { get; set; }
         public string? Desc { get; set; }
-        public double Rating { get; set; }
+        public double Rating { get; set; } /* 0.0 - 5.0 */
     }
 }
