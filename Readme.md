@@ -9,6 +9,7 @@
 	- Liste avec pagination
 - Rechercher par critere (Titre, Réal, Genre)
 - Modifier les détails d'un film
+- Support du Cinecheck
 
 ### Gestion de séance
 - Ajouter, Supprimer une séance
