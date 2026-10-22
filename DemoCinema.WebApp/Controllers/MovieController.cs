@@ -62,7 +62,7 @@ namespace DemoCinema.WebApp.Controllers
         public IActionResult Create([FromForm] MovieForm data)
         {
             if(!ModelState.IsValid)
-            {
+            {//
                 return View(data);
             }
 
