@@ -17,6 +17,9 @@
 	- Liste par jour
 	- Liste par film
 - Annuler une séance
+- Gestion des "Avant-Première"
+	- Planification autorisé cinq jours avant la date de sortie
+	- Le tag « Séance Spéciale » apparait automatiquement
 
 ## Architecture de l'application
 Application Monolithe en couche
