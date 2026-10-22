@@ -1,3 +1,8 @@
+using DemoCinema.BLL.Interfaces;
+using DemoCinema.BLL.Services;
+using DemoCinema.DAL;
+using DemoCinema.DAL.Interfaces;
+using DemoCinema.DAL.Repositories;
 using DemoCinema.WebApp.Tools;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +26,13 @@ builder.Services.AddTransient(typeof(DemoTransientTool));
 builder.Services.AddSingleton<DemoSingletonTool>();
 builder.Services.AddScoped<DemoScopedTool>();
 builder.Services.AddTransient<DemoTransientTool>();
+
+// Injection des services
+builder.Services.AddSingleton<DataStaticContext>();
+builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<IMovieRepository, MovieStaticRepository>();
+
+
 
 var app = builder.Build();
 

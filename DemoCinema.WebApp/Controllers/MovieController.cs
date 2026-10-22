@@ -9,9 +9,10 @@ namespace DemoCinema.WebApp.Controllers
     {
         // Config des services utilisé dans le controller
         private readonly IMovieService _movieService;
-        public MovieController()
+
+        public MovieController(IMovieService movieService)
         {
-            _movieService = new MovieService();
+            _movieService = movieService;
         }
 
         // Définition des routes du controller

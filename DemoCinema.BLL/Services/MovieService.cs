@@ -10,9 +10,10 @@ namespace DemoCinema.BLL.Services
     public class MovieService : IMovieService
     {
         private readonly IMovieRepository _movieRepository;
-        public MovieService()
+
+        public MovieService(IMovieRepository movieRepository)
         {
-            _movieRepository = new MovieStaticRepository();
+            _movieRepository = movieRepository;
         }
 
         public MovieModel Add(MovieModel data)
