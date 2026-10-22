@@ -76,7 +76,7 @@ namespace DemoCinema.WebApp.Controllers
                 },
                 ReleaseDate = data.ReleaseDate.ToDateTime(TimeOnly.MinValue),
                 Rating = data.Rating,
-                Genres = data.Genres,
+                Genres = data.Genres.Where(g => g is not null).ToList(),
             });
 
             return RedirectToAction(nameof(Index));

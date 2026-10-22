@@ -3,6 +3,14 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Demo 04 - Cinema App</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit ab accusantium aliquid architecto aspernatur at atque beatae blanditiis commodi consequatur consequuntur corporis cumque cupiditate debitis delectus deleniti deserunt dicta dignissimos distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit ab accusantium aliquid architecto aspernatur at atque beatae blanditiis commodi consequatur consequuntur corporis cumque cupiditate debitis delectus deleniti deserunt dicta dignissimos distinctio.</p>
+
+    <h2>Demo de l'injection de dépendences</h2>
+    <ul>
+    @foreach (string line in ViewData["DemoIOC"] as List<String>)
+    {
+        <li>@line</li>
+    }
+    </ul>
 </div>

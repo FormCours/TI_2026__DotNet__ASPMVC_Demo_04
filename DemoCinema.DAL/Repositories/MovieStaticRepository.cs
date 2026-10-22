@@ -6,7 +6,7 @@ namespace DemoCinema.DAL.Repositories
     public class MovieStaticRepository : IMovieRepository
     {
         #region Static data
-        private List<MovieEntity> _movies = [
+        private static List<MovieEntity> _movies = [
             new MovieEntity
             {
                 Id = 1,
