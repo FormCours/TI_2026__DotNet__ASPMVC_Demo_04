@@ -1,5 +1,5 @@
 ﻿using DemoCinema.BLL.Interfaces;
-using DemoCinema.BLL.Services;
+using DemoCinema.WebApp.Mappers;
 using DemoCinema.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,36 +19,14 @@ namespace DemoCinema.WebApp.Controllers
         public IActionResult Index()
         {
             var data = _movieService.GetMany(1, 100)
-                                    .Select(m => new MovieViewModel
-                                    {
-                                        Id = m.Id,
-                                        Title = m.Title,
-                                        Desc = m.Desc ?? "N/A",
-                                        Genres = m.Genres,
-                                        Rating = m.Rating,
-                                        Director = $"{m.Director.FirstName} {m.Director.LastName.ToUpper()}",
-                                        ReleaseDate = DateOnly.FromDateTime(m.ReleaseDate),
-                                    });
+                                    .Select(MovieMapper.ToVM);
 
             return View(data);
         }
 
         public IActionResult Details([FromRoute] int id)
         {
-            BLL.Models.MovieModel data = _movieService.GetById(id);
-
-            // TODO Refactoring → Mapper 😱
-            MovieViewModel movie = new MovieViewModel
-            {
-                Id = data.Id,
-                Title = data.Title,
-                Desc = data.Desc ?? "N/A",
-                Genres = data.Genres,
-                Rating = data.Rating,
-                Director = $"{data.Director.FirstName} {data.Director.LastName.ToUpper()}",
-                ReleaseDate = DateOnly.FromDateTime(data.ReleaseDate),
-            };
-
+            MovieViewModel movie = _movieService.GetById(id).ToVM();
             return View(movie);
         }
 
@@ -62,23 +40,11 @@ namespace DemoCinema.WebApp.Controllers
         public IActionResult Create([FromForm] MovieForm data)
         {
             if(!ModelState.IsValid)
-            {//
+            {
                 return View(data);
             }
 
-            _movieService.Add(new BLL.Models.MovieModel
-            {
-                Title = data.Title,
-                Desc = data.Desc,
-                Director = new BLL.Models.DirectorModel()
-                {
-                    FirstName = data.DirectorFirstName,
-                    LastName = data.DirectorLastName
-                },
-                ReleaseDate = data.ReleaseDate.ToDateTime(TimeOnly.MinValue),
-                Rating = data.Rating,
-                Genres = data.Genres.Where(g => g is not null).ToList(),
-            });
+            _movieService.Add(data.ToModel());
 
             return RedirectToAction(nameof(Index));
         }
