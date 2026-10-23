@@ -16,6 +16,7 @@ builder.Services.AddControllersWithViews();
 // - Scoped : Une instance par requete (Traitement de celle-ci)
 // - Transient : Une nouvelle instance à chaque appel
 
+#region Service d'exemple pour la demo
 // Ecriture en typeof
 /* 
 builder.Services.AddSingleton(typeof(DemoSingletonTool));
@@ -26,12 +27,14 @@ builder.Services.AddTransient(typeof(DemoTransientTool));
 builder.Services.AddSingleton<DemoSingletonTool>();
 builder.Services.AddScoped<DemoScopedTool>();
 builder.Services.AddTransient<DemoTransientTool>();
+#endregion
 
 // Injection des services
 builder.Services.AddSingleton<DataStaticContext>();
-builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IMovieRepository, MovieStaticRepository>();
-
+builder.Services.AddScoped<IScreeningRepository, ScreeningStaticRepository>();
+builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<IScreeningService, ScreeningService>();
 
 
 var app = builder.Build();

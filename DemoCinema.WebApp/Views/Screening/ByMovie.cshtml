@@ -1,0 +1,64 @@
+@model IEnumerable<DemoCinema.WebApp.Models.ScreeningViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Index">Retour</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduleDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCancel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.ScheduleDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ShowTime)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.MovieId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.MovieTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.IsCancel)
+            </td>
+            <td>
+                <a asp-action="Cancel" asp-route-id="@item.Id">Annuler</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

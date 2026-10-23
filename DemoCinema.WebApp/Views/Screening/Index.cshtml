@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MovieViewModel>
+
+@{
+    ViewData["Title"] = "Screening Page";
+}
+
+<h1>Rechercher une séance</h1>
+
+<form method="get" asp-action="ByDate" >
+    <label for="search-date" class="control-label display-6">Par date</label>
+    <div class="row g-3">
+        <div class="col-6">
+            <input id="search-date" name="date" type="date" required class="form-control" />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-warning">Rechercher</button>
+        </div>
+    </div>
+</form>
+
+<form method="get" asp-action="ByMovie" >
+    <label for="search-movie" class="control-label display-6">Par film</label>
+    <div class="row g-3">
+        <div class="col-6">
+            <select id="search-movie" name="movieId" required class="form-control">
+            @foreach(MovieViewModel movie in Model)
+            {
+                <option value="@movie.Id">@movie.Title (@movie.ReleaseDate)</option>
+            }
+            </select>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-warning">Rechercher</button>
+        </div>
+    </div>
+</form>
+
+<hr class="mt-5" />
+
+<h2>Créer une nouvelle séance</h2>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Formulaire de création</a>
+</p>

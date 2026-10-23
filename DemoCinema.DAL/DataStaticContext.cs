@@ -70,5 +70,31 @@ namespace DemoCinema.DAL
         internal int NextMovieId = 7;
         #endregion
 
+        #region Screening
+        internal List<ScreeningEntity> Screenings = [
+            new ScreeningEntity {
+                Id = 1,
+                Schedule = new DateTime(2026, 8, 1),
+                Duration = 180,
+                MovieId = 6,
+                IsCancel = false
+            },
+            new ScreeningEntity {
+                Id = 2,
+                Schedule = new DateTime(2026, 9, 12),
+                Duration = 150,
+                MovieId = 2,
+                IsCancel = false
+            },
+            new ScreeningEntity {
+                Id = 4,
+                Schedule = new DateTime(2027, 1, 1),
+                Duration = 210,
+                MovieId = 6,
+                IsCancel = false
+            },
+        ];
+        internal int NextScreeningId = 5;
+        #endregion
     }
 }

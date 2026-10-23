@@ -3,7 +3,7 @@ using DemoCinema.WebApp.Models;
 
 namespace DemoCinema.WebApp.Mappers
 {
-    public static class MovieMapper
+    internal static class MovieMapper
     {
         public static MovieModel ToModel(this MovieForm data)
         {

@@ -7,6 +7,7 @@ namespace DemoCinema.WebApp.Models
     {
         // Utilisation du Scaffolding
         // → Du à un bug (ou feature) de l'outils de génération, il est necessaire d'ajouter une propriété "Id" pour créer la vue, même si celui-ci n'est pas utilisé dans le template "Create".
+        public int id { get; set; }
 
         [Required(ErrorMessage ="Le titre du film est requis")]
         [DisplayName("Titre")]
